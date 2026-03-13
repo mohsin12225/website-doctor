@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Doctor — Free AI Website Audit</title>
+    <meta name="description"
+        content="Get a plain-English website health report with SEO, performance, and UX scores. Powered by AI." />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" aria-live="polite">
+        <span class="toast-icon" id="toastIcon">⚠️</span>
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo" aria-label="Website Doctor home">
+                <span class="logo-mark">🩺</span>
+                <span class="logo-word">Website<strong>Doctor</strong></span>
+            </a>
+            <span class="header-tag">AI-Powered</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- ─── Hero ─── -->
+        <section class="hero" id="hero">
+            <h1>Check Your <span class="accent">Website Health</span></h1>
+            <p class="hero-sub">
+                Enter any URL and get an honest, plain-English audit<br />
+                with scores, real issues, and easy fixes.
+            </p>
+
+            <form class="search-form" id="searchForm" autocomplete="off">
+                <div class="search-bar">
+                    <svg class="search-bar-icon" viewBox="0 0 24 24" width="20" height="20" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <input type="text" id="urlInput" class="search-input"
+                        placeholder="Enter a website URL — e.g. example.com" spellcheck="false" required />
+                    <button type="submit" class="search-btn" id="analyzeBtn">
+                        <span class="btn-label">Analyze</span>
+                        <span class="btn-spinner" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </form>
+
+            <div class="quick-links">
+                <span>Try:</span>
+                <button type="button" class="chip" data-url="github.com">github.com</button>
+                <button type="button" class="chip" data-url="wikipedia.org">wikipedia.org</button>
+                <button type="button" class="chip" data-url="stripe.com">stripe.com</button>
+            </div>
+        </section>
+
+        <!-- ─── Loading ─── -->
+        <section class="loading-section" id="loadingSection" aria-live="polite">
+            <div class="loading-card">
+                <div class="loading-pulse"></div>
+                <p class="loading-title">Analyzing <strong id="loadingDomain"></strong></p>
+                <p class="loading-status" id="loadingStatus">Connecting to website…</p>
+                <p class="loading-note">This takes 10–20 seconds. We are fetching the real page and running AI analysis.
+                </p>
+            </div>
+        </section>
+
+        <!-- ─── Error ─── -->
+        <section class="error-section" id="errorSection">
+            <div class="error-card">
+                <div class="error-icon">😕</div>
+                <h2 id="errorTitle">Something went wrong</h2>
+                <p id="errorText"></p>
+                <button type="button" class="btn-outline" id="errorRetryBtn">Try Again</button>
+            </div>
+        </section>
+
+        <!-- ─── Results ─── -->
+        <section class="results-section" id="resultsSection">
+            <div id="reportMount"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Website Doctor uses <a href="https://groq.com" target="_blank" rel="noopener">Groq AI</a> to analyse real
+            page data. No fake scores. No mock data.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
