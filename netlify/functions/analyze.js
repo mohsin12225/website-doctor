@@ -339,7 +339,7 @@ exports.handler = async (event) => {
                 },
                 timeout: 30000,
                 body: JSON.stringify({
-                    model: "llama3-70b-8192",
+                    model: "llama-3.3-70b-versatile",
                     messages: [
                         {
                             role: "system",
@@ -426,4 +426,5 @@ exports.handler = async (event) => {
     report.extractedData = pageData;
 
     return respond(200, report);
+
 };
